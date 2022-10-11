@@ -1,0 +1,22 @@
+body{
+    height: 100vh;
+    overflow-x: hidden;
+    padding: 0px;
+}
+
+header{
+    min-height: 15vh;
+}
+
+main{
+    background-color: rgb(209, 213, 218);
+    margin-bottom: 0px;
+    height: fit-content;
+}
+
+
+
+main aside{
+    background-color: white;
+}
+
