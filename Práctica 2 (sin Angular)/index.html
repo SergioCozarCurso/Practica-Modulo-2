@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica Módulo 2</title>
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+<body class="d-flex flex-column align-items-center">
+
+    <header  class="col-12 p-4 mt-3 row d-flex align-items-center">
+
+        <h1 class="col-4">Práctica Módulo 2</h1>
+
+        <nav class="navbar navbar-expand-lg bg-light col-8">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Home</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Contacto</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Sobre nosotros</a>
+                  </li>
+      
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="col-12 row mt-4 d-flex  justify-content-between">
+
+        <div class="col-9 p-4">
+
+            <h2 class="p-2 mb-3">Ejercicios Módulo 2</h2>
+
+            <article class="mb-3 mt-5">
+
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Ejercicio 4</h5>
+                      <p class="card-text">Escribe un programa que declare 3 objetos de cada modelo de datos considerado:
+                        gestor, cliente, mensaje y transferencia. Los valores de las propiedades de los objetos
+                        pueden ser arbitrarios.</p>
+                        <p class="card-text"><small class="text-muted">Dale al botón para mostrar resultados.</small></p>
+                        <button id="Ejercicio4" class="btn btn-outline-primary">Mostrar Ejercicio 4</button>
+                    </div>
+                </div>
+
+            </article>
+
+            <article class="mb-3">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Ejercicio 5</h5>
+                        <p class="card-text">Escribe un programa que almacene los objetos creados en el ejercio anterior del
+                          proyecto dentro de un array (un array por cada modelo de datos). A continuación,
+                          recorre cada uno de los arrays y muestra todas propiedades.</p>
+                        <p class="card-text"><small class="text-muted">Dale al botón para mostrar resultados.</small></p>
+                        <button id="Ejercicio5" class="btn btn-outline-primary">Mostrar ejercicio 5</button>
+                    </div>
+                </div>
+
+            </article>
+
+            <article class="mb-3">
+
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Ejercicio 6</h5>
+                    <p class="card-text">Escribe un programa que realice la conversión a JSON del array (y viceversa) creado
+                      en el ejercicio anterior del proyecto.</p>
+                    <p class="card-text"><small class="text-muted">Dale al botón para mostrar resultados.</small></p>
+                    <button id="Ejercicio6a" class="btn btn-outline-primary">Mostrar Ejercicio 6 (Array to JSON)</button>
+                    <button id="Ejercicio6b" class="btn btn-outline-primary">Mostrar Ejercicio 6 (JSON to Array)</button>
+                  </div>
+                </div>
+
+            </article>
+
+            <article class="mb-3">
+
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Ejercicio 7</h5>
+                    <p class="card-text">Escribe un programa que haga uso del servicio web del banco y realice una petición
+                      con AJAX a la url: http://localhost:8085/ok</p>
+                    <p class="card-text"><small class="text-muted">Dale al botón para mostrar resultados.</small></p>
+                    <button id="Ejercicio7" class="btn btn-outline-primary">Mostrar Ejercicio 7 (hacer la petición)</button>
+                  </div>
+                </div>
+
+            </article>
+
+            <article class="mb-3">
+
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Ejercicio 8</h5>
+                    <p class="card-text">Crea una función en JavaScript que obtenga todos los gestores de forma periódica
+                      cada 5 segundos.</p>
+                    <p class="card-text"><small class="text-muted">Dale al botón para mostrar resultados.</small></p>
+                    <button id="Ejercicio8" class="btn btn-outline-primary">Mostrar Ejercicio 8</button>
+                    <button id="Ejercicio8stop" class="btn btn-outline-danger">Stop</button>
+                  </div>
+                </div>
+
+            </article>
+
+        </div>
+
+        
+        <aside class="col-2 p-4">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  A list item
+                  <span class="badge bg-primary rounded-pill">14</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  A second list item
+                  <span class="badge bg-primary rounded-pill">2</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  A third list item
+                  <span class="badge bg-primary rounded-pill">1</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  A fourth list item
+                  <span class="badge bg-primary rounded-pill">16</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  A fifth list item
+                  <span class="badge bg-primary rounded-pill">21</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  A sixth list item
+                  <span class="badge bg-primary rounded-pill">1</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  A seventh list item
+                  <span class="badge bg-primary rounded-pill">3</span>
+                </li>
+              </ul>
+        </aside>
+    </main>
+
+
+    <script src="main.js"></script>
+    <!-- <script src="ejercicio9-JStoTS.js"></script> -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    
+</body>
+</html>
