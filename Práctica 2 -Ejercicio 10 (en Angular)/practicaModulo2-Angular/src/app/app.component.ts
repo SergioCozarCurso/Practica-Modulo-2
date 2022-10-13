@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http'
 
 interface modeloDatos {
   gestor: string
@@ -30,7 +30,12 @@ class modeloDeDatosBanco {
 export class AppComponent implements OnInit, modeloDatos, modeloDeDatosBanco{
   title = 'practica Modulo2-Angular';
 
-  constructor(){}
+  gestor!: string;
+  cliente!: string;
+  mensaje!: string;
+  transferencia!: number;
+
+  constructor( private http: HttpClient){}
 
   ngOnInit(): void{
   }
@@ -41,9 +46,7 @@ tsc ejercicio9-JStoTS.ts
 */
 
 
-btnEjercicio5 = document.getElementById("Ejercicio5")
-btnEjercicio6a = document.getElementById("Ejercicio6a")
-btnEjercicio6b = document.getElementById("Ejercicio6b")
+
 btnEjercicio7 = document.getElementById("Ejercicio7")
 btnEjercicio8 = document.getElementById("Ejercicio8")
 btnEjercicio8stop = document.getElementById("Ejercicio8stop")
@@ -54,6 +57,7 @@ Escribe un programa que declare 3 objetos de cada modelo de datos considerado:
 gestor, cliente, mensaje y transferencia. Los valores de las propiedades de los objetos
 pueden ser arbitrarios.
 */
+
 
 Object1: modeloDatos = new modeloDeDatosBanco("Manuel", "Sergio", "Nómina Agosto", 1000)
 Object2: modeloDatos = new modeloDeDatosBanco("Fernando", "Silvia", "Gastos de transporte", 200)
@@ -79,7 +83,7 @@ arrayObject1: object[] = [];
 arrayObject2: object[] = [];
 arrayObject3: object[] = [];
 
-const objectsToArray = (object: modeloDatos, arrayObject: object[]) =>{
+objectsToArray = (object: modeloDatos, arrayObject: object[]) =>{
 
 
     Object.entries(object).forEach(element => {
@@ -106,81 +110,76 @@ Escribe un programa que realice la conversión a JSON del array (y viceversa) cr
 en el ejercicio anterior del proyecto.
 */
 
-let json1: string;
-let json2: string;
-let json3: string;
+json1!: string;
+json2!: string;
+json3!: string;
 
-let conversorArrayToJson = (array: object[]) => {
+conversorArrayToJson = (array: object[]) => {
 
     let json = JSON.stringify(array)
     console.log("Json del Array: ", json);
     return json;
 }
 
-let conversorJsonToArray = (json: string) => {
+conversorJsonToArray = (json: string) => {
 
     let array = JSON.parse(json)
     console.log("Array del Json: ", array);
 }
 
 
+ejercicio6a(){
 
-btnEjercicio6a!.addEventListener("click", () => {
+  if(this.arrayObject1.length === 0){
+      alert("Haz primero el ejercicio 5 para continuar")
+  }else{
+      alert("Mira el resultado por consola!")
+      console.warn("Ejercicio 6 (Array to JSON):")
+      this.json1 = this.conversorArrayToJson(this.arrayObject1)
+      this.json2 = this.conversorArrayToJson(this.arrayObject2)
+      this.json3 = this.conversorArrayToJson(this.arrayObject3)
+  }
+}
 
-    if(arrayObject1.length === 0){
-        alert("Haz primero el ejercicio 5 para continuar")
-    }else{
-        alert("Mira el resultado por consola!")
-        console.warn("Ejercicio 6 (Array to JSON):")
-        json1 = conversorArrayToJson(arrayObject1)
-        json2 = conversorArrayToJson(arrayObject2)
-        json3 = conversorArrayToJson(arrayObject3)
-    }
-});
+ejercicio6b(){
 
-btnEjercicio6b!.addEventListener("click", () => {
+  if(this.json1 === ''){
+      alert("Haz primero el ejercicio 6 (Array to Json) para continuar")
+  }else{
+      alert("Mira el resultado por consola!")
+      console.warn("Ejercicio 6 (JSON to Array):")
+      this.conversorJsonToArray(this.json1)
+      this.conversorJsonToArray(this.json2)
+      this.conversorJsonToArray(this.json3)
+  }
+}
 
-
-    if(json1 === ''){
-        alert("Haz primero el ejercicio 6 (Array to Json) para continuar")
-    }else{
-        alert("Mira el resultado por consola!")
-        console.warn("Ejercicio 6 (JSON to Array):")
-        conversorJsonToArray(json1)
-        conversorJsonToArray(json2)
-        conversorJsonToArray(json3)
-    }
-});
 
 /* 
 Ejercicio 7:
 Escribe un programa que haga uso del servicio web del banco y realice una petición
 con AJAX a la url: http://localhost:8085/ok 
+Lo he hecho con httpClient porque no me deja usar ajax.
 */
 
-const peticionAjax = async () =>{
-    let request = await $.ajax({
-        method: "GET",
-        headers: {  'Access-Control-Allow-Origin': 'http://localhost:8085/ok' },
-        url: "http://localhost:8085/ok"
-      });
-
+peticionHttp = async () =>{
     
-      
-      return request;
+ return this.http.get('http://localhost:8085/ok')
 
 } 
 
-btnEjercicio7!.addEventListener("click", async () => {
+async ejercicio7(){
 
-    console.warn("Ejercicio 7")
+  console.warn("Ejercicio 7");
 
-    let respuesta = await peticionAjax()
+  (await this.peticionHttp()).subscribe( resp => {
+    console.log(resp);
+  })
 
-    console.log(respuesta);
-   
-    alert("Mira el resultado por consola")
-});
+  /* console.log(respuesta); */
+  alert("Mira el resultado por consola")
+}
+
 
 /* 
 Ejercicio 8:
@@ -188,35 +187,37 @@ Crea una función en JavaScript que obtenga todos los gestores de forma periódi
 cada 5 segundos.
 */
 
-let interval: string | number | NodeJS.Timer | undefined;
+interval: string | number | NodeJS.Timer | undefined;
 
-btnEjercicio8!.addEventListener("click", () => {
+async ejercicio8(){
 
-    console.warn("Ejercicio 8")
-    console.log("Inicio de interval");
-    interval = setInterval(async() => {
-        
-        let data = await peticionAjax()
+  console.warn("Ejercicio 8")
+  console.log("Inicio de interval");
 
-        if (data){
-           data.banco.forEach((gestion: { gestor: any }) => {
-            let gestor = gestion.gestor
-            console.log({gestor});
-           })
-            
-        }
-   }, 5000);
+  let getGestores= async()=> {
+    (await this.peticionHttp()).subscribe( resp => {
+  
+      if (resp){
+        let resultado: any = resp
+         resultado.banco.forEach((gestion: { gestor: any }) => {
+          let gestor = gestion.gestor
+          console.log({gestor});
+         })
+      }
+    })
+  }
 
+  getGestores()
+  
+  this.interval = setInterval(async() => { 
+    getGestores()
+  }, 5000);
+}
 
-});
+ejercicio8stop(){
 
-btnEjercicio8stop!.addEventListener("click", () => {
-
-    clearInterval(interval)
-    console.log("Interval parado");
-});
-
-
-
+  clearInterval(this.interval)
+  console.log("Interval parado");
+}
 
 }
