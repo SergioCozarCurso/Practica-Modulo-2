@@ -17,10 +17,11 @@
 
   NOTA: Para que Angular funcione, hay que instalar:
   
-    -Angular: npm install -g @angular/cli
-    -Angular Common: npm i @angular/common
+    Node Modules/NodeJs: npm install
+    Angular: npm install -g @angular/cli
+    Angular Common: npm i @angular/common
     
-  NOTA2: El servidor solo se encuentra en la versión (sin Angular), por lo que para que la aplicación completa funcione en Angular, hay que abrir la versión Sin angular y ejecutar "npm start"
+  NOTA2: El servidor solo se encuentra en la versión (sin Angular), por lo que para que la aplicación completa funcione en Angular, hay que abrir la versión Sin angular   y ejecutar "npm start"
 
   
 
